@@ -1,6 +1,18 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
+interface Props {
+  cancel?: boolean
+  children: string
+  onClick: () => void
+}
+
+export const Button: React.FC<Props> = (props) => (
+  <StyledButton onClick={props.onClick} className={props.cancel ? 'cancel' : ''}>
+    {props.children}
+  </StyledButton>
+)
+
 const StyledButton = styled.button`
   background-color: dodgerblue;
   border: none;
@@ -16,15 +28,3 @@ const StyledButton = styled.button`
     color: gray;
   }
 `
-
-interface Props {
-  cancel?: boolean
-  children: string
-  onClick: () => void
-}
-
-export const Button: React.FC<Props> = (props) => (
-  <StyledButton onClick={props.onClick} className={props.cancel ? 'cancel' : ''}>
-    {props.children}
-  </StyledButton>
-)
